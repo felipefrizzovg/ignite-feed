@@ -6,6 +6,41 @@ import styles from './App.module.css'
 
 import './global.css'
 
+// author: { avatar_url: "", name: "", role: "" }
+// publishedAt: Date
+// content: String
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/felipefrizzovg.png",
+      name: "Felipe Frizzo",
+      role: "Web Developer"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},      
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2024-07-04 15:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO @ Rocketseat"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},      
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2024-07-05 15:00:00')
+  },
+]
+
 export function App() {
   return (
     <>
@@ -14,15 +49,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Felipe Frizzo"
-            content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi placeat eum delectus amet ducimus aliquam autem, natus vel, aliquid dicta dolores libero reiciendis incidunt deserunt laboriosam neque eveniet hic eligendi?"
-          />
-
-          <Post
-            author="Raphael Frizzo"
-            content="Segundo post"
-          />
+          {posts.map(post => {
+            return (
+              <Post 
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
 
